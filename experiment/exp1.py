@@ -11,9 +11,9 @@ import math
 import random
 import numpy as np
 import matplotlib.pyplot as plt
-from dispatch import MaxMinFair
-from dispatch import OnlyWeight
-from dispatch import Pulp
+from Scheduling import WMMF
+from Scheduling import PIPO
+from Scheduling import LPESCP
 
 
 class User:

@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import tools
-from dispatch import MaxMinFair, OnlyWeight, Pulp
+from Scheduling import WMMF, PIPO, LPESCP
 
 
 class User:

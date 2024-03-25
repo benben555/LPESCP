@@ -1,4 +1,4 @@
-from dispatch import MaxMinFair, OnlyWeight, Pulp
+from Scheduling import WMMF, PIPO, LPESCP
 from charm.schemes.pkenc.pkenc_rsa import RSA_Enc
 from schemes import lightweight_peaks as peaks
 import tools
