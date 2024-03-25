@@ -212,8 +212,6 @@ snap changes
 
 如图：
 
-![img](https://img-blog.csdnimg.cn/img_convert/d9085116a96c5c63859c5259fa0230bb.png)
-
 ID=7的进程是我之前安装失败的。
 
 2、清除当前安装，然后再重新安装，命令如下：
