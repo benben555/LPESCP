@@ -92,5 +92,5 @@ for i in range(500):
     # print(MatchTest(SPM, Ckw, TD_kw))
     end = time.perf_counter()
     print('Running time: %s Seconds' % (end - start))
-    with open('../scheme_result/CABES.txt', 'a', encoding='UTF - 8') as f:
+    with open('../scheme_result/CBEKS.txt', 'a', encoding='UTF - 8') as f:
         data = f.write(str(end - start) + "\n")

@@ -1,6 +1,6 @@
 from charm.core.engine.util import objectToBytes
 from charm.toolbox.pairinggroup import PairingGroup, ZR, G1, G2, pair, GT
-
+import time
 group = PairingGroup("SS512")
 
 
@@ -46,7 +46,7 @@ def Test(Cw, Tw):
     A, B = Cw
     return group.serialize(pair(Tw, B)) == A
 
-import time
+
 
 for i in range(500):
     start = time.perf_counter()

@@ -82,7 +82,7 @@ def sum_weight(Provide, Demand, st_true_provide, st_true_demand, st_provide_weig
         if Provide[i] == 0:
             sums += (1 - 1 / (st_provide_weight[i] + 1))
         else:
-            sums += (1 - 1 / (st_provide_weight[i] + 1)) * math.sqrt(1 - st_true_provide[i] / Provide[i])
+            sums += (1 - 1 / (st_provide_weight[i] + 1)) * math.sqrt((1 - st_true_provide[i] / Provide[i]))
     return sums
 
 
