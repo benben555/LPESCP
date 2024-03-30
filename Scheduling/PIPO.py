@@ -41,7 +41,7 @@ def only_weight(Provide, Demand, st_provide_weight, st_demand_weight):
     weight = tools.result(weight * 5)
     print("只考虑权重的能源调度算法满意度 is", weight)
     current_path = os.path.dirname(__file__)
-    with open(current_path + '/../satisfy/processed_PIPO.txt', 'a', encoding='UTF - 8') as f:
+    with open(current_path + '/../satisfy/PIPO.txt', 'a', encoding='UTF - 8') as f:
         f.write("\n" + str(weight))
     print(tools.ceil2(sum(st_true_provide)), tools.floor2(sum(st_true_demand)))
     return st_true_provide, st_true_demand, weight

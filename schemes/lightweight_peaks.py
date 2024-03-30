@@ -14,8 +14,8 @@ def SystemSetup():
     group = ECGroup(prime192v2)
     P = group.random(G)
     q = group.order()
-    KW_space = ["urgent", "normal", "anyway"]
-    EC = {"urgent": 10, "normal": 20, "anyway": 30, "other": 40, 'a': 21, 'b': 22, 'c': 33, 'abc': 45, 'age': 29}
+    KW_space = ["1", "2", "3", "normal", "urgent"]
+    EC = {"urgent": 5, "normal": 4, "1": 1, "2": 2, '3': 3}
     GSP = {'G': group, 'P': P, 'q': q, 'KW_space': KW_space, 'EC': EC}
     return GSP
 

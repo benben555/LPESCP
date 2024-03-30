@@ -60,7 +60,7 @@ def Weight(Provide, Demand, st_provide_weight, st_demand_weight):
     weight = tools.result(weight * 5)
     print("max-min-fair满意度 is", weight)
     current_path = os.path.dirname(__file__)
-    with open(current_path + '/../satisfy/processed_WMMF.txt', 'a', encoding='UTF - 8') as f:
+    with open(current_path + '/../satisfy/WMMF.txt', 'a', encoding='UTF - 8') as f:
         f.write("\n" + str(weight))
     print(tools.ceil2(sum(st_true_provide)), tools.floor2(sum(st_true_demand)))
     return st_true_provide, st_true_demand, weight
