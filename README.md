@@ -2,10 +2,12 @@ We conduct simulations using the Charm-crypto cryptography library based on the 
 
 Our program is running on the Ubuntu 20.04 system.
 
-The python version requires 3.7 to be installed.
+The python version requires 3.7 to be installed. 
+
+Notice that, all packages used in the code need to be installed by using the command "pip install xxx"(实验中所需要用到的包都需要用pip install xxx安装)
 
 
-### 1. install python3.7
+### 1. Install python3.7
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt install python3.7      # 安装Python3.7
@@ -31,7 +33,7 @@ sudo apt install python3-pip
 sudo apt-get install python3.7-distutils
 ```
 
-If there is an error ：ModuleNotFoundError: No module named ‘apt_pkg’,python3-apt should be reinstalled
+If there is an error ：ModuleNotFoundError: No module named ‘apt_pkg’, python3-apt should be reinstalled
 ```
 # 重新安装python3-apt
 sudo apt remove python3-apt
@@ -39,7 +41,7 @@ sudo apt autoremove  # 此命令慎用，可以先不输入它，看能否解决
 sudo apt autoclean
 sudo apt install python3-apt
 ```
-### 2. install the Charm-crypto cryptography library
+### 2. Install the Charm-crypto cryptography library
 
 #### 2.1 Checking the toolchain version(检查工具链版本)
 ```
@@ -47,27 +49,27 @@ gcc -v
 make -v
 perl -v
 ```
-if gcc、make、perl has been installed, the version number should be showed as follows:
+if gcc, make and perl have been installed, the version number should be showed as follows:
 ```
 gcc  -> 9.4.0
 make -> 4.2.1
 perl -> 5.30.0
 ```
-inversely, gcc、make、perl should be installed
-#### 2.2 If not then install(如果没有则安装)
+
+Inversely, gcc, make and perl should be installed(如果没有则安装)
 ```
 sudo apt-get install gcc
 sudo apt-get install make
 sudo apt-get install perl
 ```
 
-#### 2.3 Install dependent libraries(安装依赖库)
+#### 2.2 Install dependent libraries(安装依赖库)
 ```
 sudo apt-get update
 sudo apt-get install m4 flex bison
 ```
 
-#### 2.4 Install python dependencies(安装python依赖)
+#### 2.3 Install python dependencies(安装python依赖)
 ```
 sudo apt-get install python3-setuptools python3.7-dev libssl-dev
 sudo apt-get install python3.7-distutils
@@ -75,35 +77,29 @@ pip3 install pyparsing==2.4.6
 pip3 install hypothesis
 ```
 
-#### 2.5 Compile and Install OpenSSL(编译安装OpenSSL)
-```
-openssl version
-```
-Using the default version 1.1.1, the installation was successful.(使用默认1.1.1版本，安装成功。)
-
-### 3. Installation of GMP(安装GMP)
+### 3. Install GMP(安装GMP)
 
 
 GMP is an open source software library that provides high-precision arithmetic, supporting operations on signed integers, rational numbers, and floating point numbers.
-For the download address https://gmplib.org/download/gmp/ (GMP是一个提供高精度算术的开源软件库，支持对有符号整数、有理数和浮点数进行运算。 下载地址https://gmplib.org/download/gmp/ )
+The download address is https://gmplib.org/download/gmp/ (GMP是一个提供高精度算术的开源软件库，支持对有符号整数、有理数和浮点数进行运算。 下载地址为https://gmplib.org/download/gmp/ )
 #### 3.1 Download and unzip the version 5.1.3(下载并解压版本5.1.3)
 ```
 tar -xvf gmp-5.1.3.tar.bz2
 ```
-#### 3.2  Move the unzipped gmp-5.1.3 tor usr/local/src/(移动到usr/local/src/下)
+#### 3.2  Move the unzipped gmp-5.1.3 to usr/local/src/(移动到usr/local/src/下)
 ```
 sudo mv gmp-5.1.3 /usr/local/src/
 cd /usr/local/src/gmp-5.1.3
 ```
 
 
-#### 3.3  Write Configuration(写入配置)
+#### 3.3  Write configuration(写入配置)
 ```
 sudo ./configure
 ```
 
 
-#### 3.4  install(安装)
+#### 3.4  Install(安装)
 ```
 sudo make 
 sudo make install
@@ -111,13 +107,13 @@ sudo make install
 
 ### 4. Compile and install PBC(编译安装PBC)
 This step is similar to step 3 of the installation of GMP.
-Download address https://crypto.stanford.edu/pbc/download.html ,(下载地址https://crypto.stanford.edu/pbc/download.html 选择0.5.14
-解压,移动
-进入目录，配置
-编译
-安装
-在/etc/ld.so.conf.d/目录下新建一个libpbc.conf,) 
-#### 4.1  Download select 0.5.14
+Download address is https://crypto.stanford.edu/pbc/download.html ,(下载地址https://crypto.stanford.edu/pbc/download.html 选择0.5.14
+解压,移动，
+进入目录，配置，
+编译，
+安装，
+在/etc/ld.so.conf.d/目录下新建一个libpbc.conf) 
+#### 4.1 Install PBC
 ```
 tar -xvf pbc-0.5.14.tar.gz 
 sudo mv pbc-0.5.14 /usr/local/src/
@@ -129,11 +125,11 @@ sudo touch /etc/ld.so.conf.d/libpbc.conf
 sudo vi /etc/ld.so.conf.d/libpbc.conf
 ```
 
-#### 4.2  write
+#### 4.2  Write(写入以下语句)
 ```
 /usr/local/lib
 ```
-
+#### 4.3 Conduct the following command(执行以下命令)
 ```
 sudo ldconfig
 ```
@@ -146,30 +142,25 @@ sudo ldconfig
 git clone https://github.com/JHUISI/charm.git
 ```
 
-Or download the zip package and unzip it(或者下载压缩包，解压)
-```
-unzip charm-dev.zip 
-```
-
-####5.2  move(移动)
+#### 5.2  Move(移动)
 ```
 sudo mv charm-dev /usr/local/src/
 ```
 
-####5.3 Enter the catalog and configure(进入目录并配置)
+#### 5.3 Enter the catalog and configure(进入目录并配置)
 ```
 cd /usr/local/src/charm-dev
 sudo ./configure.sh
 ```
 
-####5.4 Compile and install(编译并安装)
+#### 5.4 Compile and install(编译并安装)
 ```
 sudo make
 sudo make install
 ```
 
 
-If there is a series of problems such as apt unavailable after reboot, network card loading failure and so on.(如果出现重启后apt不可用，网卡加载失败等一系列问题。执行以下命令)
+If there is a series of problems such as apt unavailable after reboot, network card loading failure and so on.(如果出现重启后apt不可用、网卡加载失败等一系列问题，执行以下命令)
 ```
 cd /usr/local/lib
 sudo rm libgmp*
@@ -186,9 +177,7 @@ g = group2.random(G2)
 ```
 
 
-All packages used in the code need to be installed by using the command "pip install xxx"(实验中所需要用到的包都需要用pip install xxx安装)
-
-### 6. experimental simulations
+### 6. Experimental simulations
 In the simulation setup, we consider a scenario with Dnum power consumers (0<Dnum<20) and Snum power suppliers (Snum=20-Dnum), i.e., a total of 20 users. We conduct three experiments, i.e., Experiment 1 -- 3.
 The experiment directory holds the code for our experiments.
 ```
@@ -225,9 +214,6 @@ schemes
 ├── CBSE.py
 ├── PAUKS.py
 ├── __pycache__
-├── abe.py
 ├── lightweight_peaks.py
-├── paeks.py
-├── peks.py
-└── user-friendly-PAEKS.py
+└── paeks.py
 ```
