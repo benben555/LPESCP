@@ -49,7 +49,7 @@ gcc -v
 make -v
 perl -v
 ```
-If gcc, make and perl have been installed, the version number should be showed as follows:
+If gcc, make and perl have been installed, the version number will be showed as follows:
 ```
 gcc  -> 9.4.0
 make -> 4.2.1
@@ -105,15 +105,15 @@ sudo make
 sudo make install
 ```
 
-### 4. Install PBC(编译安装PBC)
+### 4. Install PBC(安装PBC)
 This step is similar to step 3 of the installation of GMP.
-Download address is https://crypto.stanford.edu/pbc/download.html ,(下载地址https://crypto.stanford.edu/pbc/download.html 选择0.5.14
+Download address is https://crypto.stanford.edu/pbc/download.html and the version is 0.5.14,(下载地址https://crypto.stanford.edu/pbc/download.html 选择0.5.14
 解压,移动，
 进入目录，配置，
 编译，
 安装，
 在/etc/ld.so.conf.d/目录下新建一个libpbc.conf) 
-#### 4.1 Install PBC(安装PBC)
+#### 4.1 Unzip and install PBC(安装PBC)
 ```
 tar -xvf pbc-0.5.14.tar.gz 
 sudo mv pbc-0.5.14 /usr/local/src/
