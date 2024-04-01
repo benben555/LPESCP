@@ -4,10 +4,10 @@ Our program is running on the Ubuntu 20.04 system.
 
 The python version requires 3.7 to be installed. 
 
-Notice that, all packages used in the code need to be installed by using the command "pip install xxx"(实验中所需要用到的包都需要用pip install xxx安装)
+Notice that, all packages used in the code need to be installed by using the command "pip install xxx".(实验中所需要用到的包都需要用pip install xxx安装)
 
 
-### 1. Install python3.7
+### 1. Install python3.7(安装python3.7)
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt install python3.7      # 安装Python3.7
@@ -25,7 +25,7 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 2
 sudo update-alternatives --config python
 ```
 
-After the above operations being confirmed that there is no problem, we recommend uninstalling and reinstalling pip
+After the above operations being confirmed that there is no problem, we recommend uninstalling and reinstalling pip.
 ```
 sudo apt purge python3-pip
 sudo apt autoremove
@@ -33,7 +33,7 @@ sudo apt install python3-pip
 sudo apt-get install python3.7-distutils
 ```
 
-If there is an error ：ModuleNotFoundError: No module named ‘apt_pkg’, python3-apt should be reinstalled
+If there is an error ：ModuleNotFoundError: No module named ‘apt_pkg’, python3-apt should be reinstalled.
 ```
 # 重新安装python3-apt
 sudo apt remove python3-apt
@@ -41,7 +41,7 @@ sudo apt autoremove  # 此命令慎用，可以先不输入它，看能否解决
 sudo apt autoclean
 sudo apt install python3-apt
 ```
-### 2. Install the Charm-crypto cryptography library
+### 2. Install the Charm-crypto cryptography library(安装Charm-crypto密码学库)
 
 #### 2.1 Checking the toolchain version(检查工具链版本)
 ```
@@ -49,14 +49,14 @@ gcc -v
 make -v
 perl -v
 ```
-if gcc, make and perl have been installed, the version number should be showed as follows:
+If gcc, make and perl have been installed, the version number should be showed as follows:
 ```
 gcc  -> 9.4.0
 make -> 4.2.1
 perl -> 5.30.0
 ```
 
-Inversely, gcc, make and perl should be installed(如果没有则安装)
+Inversely, gcc, make and perl should be installed.(如果没有则安装)
 ```
 sudo apt-get install gcc
 sudo apt-get install make
@@ -105,7 +105,7 @@ sudo make
 sudo make install
 ```
 
-### 4. Compile and install PBC(编译安装PBC)
+### 4. Install PBC(编译安装PBC)
 This step is similar to step 3 of the installation of GMP.
 Download address is https://crypto.stanford.edu/pbc/download.html ,(下载地址https://crypto.stanford.edu/pbc/download.html 选择0.5.14
 解压,移动，
@@ -113,7 +113,7 @@ Download address is https://crypto.stanford.edu/pbc/download.html ,(下载地址
 编译，
 安装，
 在/etc/ld.so.conf.d/目录下新建一个libpbc.conf) 
-#### 4.1 Install PBC
+#### 4.1 Install PBC(安装PBC)
 ```
 tar -xvf pbc-0.5.14.tar.gz 
 sudo mv pbc-0.5.14 /usr/local/src/
@@ -168,7 +168,7 @@ sudo apt --fix-broken install
 ```
 
 
-If the installation is successful, test the following code in the python environment(安装成功，使用以下python代码进行测试)
+If the installation is successful, test the following code in the python environment.(安装成功，使用以下python代码进行测试)
 ```
 from charm.toolbox.pairinggroup import PairingGroup,ZR,G1,G2,GT,pair
 group2 = PairingGroup('SS512')
@@ -177,22 +177,23 @@ g = group2.random(G2)
 ```
 
 
-### 6. Experimental simulations
-In the simulation setup, we consider a scenario with Dnum power consumers (0<Dnum<20) and Snum power suppliers (Snum=20-Dnum), i.e., a total of 20 users. We conduct three experiments, i.e., Experiment 1 -- 3.
-The experiment directory holds the code for our experiments.
+### 6. Experimental simulations(实验仿真)
+Simulations are conducted using the Charm-crypto cryptography library based on the Python language to evaluate the effectiveness and efficiency of the LPESCP model. In the simulation setup, the parameter θ is set to 0.8, KW_space={1, 2, 3, normal, urgent}, EI={(1,2), (2,3), (3,4), (4,5), (5,6)}, and we consider a scenario with Dnum power consumers (0<Dnum<20) and Snum power suppliers (Snum=20-Dnum), that is, a total of 20 users. Three experiments are conducted: Experiment 1-3.
+
+The Experiment directory holds the three Experiment exp1.py, exp2.py, and exp3.py
 ```
-experiment
+Experiment
 ├── exp1.py
 ├── exp2.py
 ├── exp3.py
 └── tools.py
 ```
 
-#### 6.1 Experiment 1(exp1.py)
-In Experiment 1, we conduct 500 random evaluation groups to demonstrate the effectiveness of our proposed LPESCP model, i.e., the ability to supply and consume power efficiently while considering data confidentiality and data utility, as well as priority and fairness. In each group, the weight of each user is randomly generated, as are the demanded power consumption of each power consumer and the maximum power supply of each power supplier in KW·h. 
+#### 6.1 Experiment 1: exp1.py(实验1：exp1.py)
+In Experiment 1, 500 random evaluation groups are conducted to demonstrate the effectiveness of the proposed LPESCP model, that is, the ability to supply and consume power efficiently while considering data confidentiality and data utility, as well as priority and fairness. In each group, the keyword of of each user is randomly selected from  KW_space; the keyword corresponding emergency coefficient is randomly selected from the keyword corresponding interval in EI; the weight of each user is randomly generated, as are the power demand of each power consumer and maximum power supply of each power supplier in KW·h. 
 
-#### 6.2 Experiment 2(exp2.py)
-In Experiment 2, we compare our proposed LPESCP model with two other priority-based scheduling algorithms, including weighted max-min fairness (WMMF)  and priority-in-priority-out (PIPO) with the same parameter settings used in Experiment 1 with 500 evaluation groups, and the metric for comparison is the global satisfaction degree of all users. When applying the WMMF strategy, energy will be allocated in multiple rounds based on users' weights which are greater than 0 until the available energy is distributed. In each allocation round, energy is allocated according to each user's respective weight ratio (the ratio of each user's weight to the sum of weights of all users participated in this round), so all users can be allocated energy. Among them, users who fail to meet their needs will continue to participate in the next round. Users who are allocated more energy than they needs will only receive energy supply equal to their demanded power, and the excess energy will be accumulated in the next round for allocation to other users. Through its unique allocation mechanism, the WMMF strategy achieves comprehensive consideration of users with different weights, meeting the needs of users with significant weights and ensuring that the minimum needs of each user are met, thereby balancing priority and fairness to some extent. In the PIPO strategy, power consumers and suppliers are sorted in accordance with their priority from highest to lowest. The high-priority power consumers receive the demand energy first and only then energy is allocated to the low-priority ones. Similarly, the lower-priority power suppliers supply energy before the high-priority power suppliers are allowed to provide energy. In short, the higher the priority of the power consumers, the earlier the energy is allocated, while the lower the priority of the power suppliers, the earlier the energy is supplied. 
+#### 6.2 Experiment 2: exp2.py(实验2：exp2.py)
+In Experiment 2, the proposed LPESCP model are compared with two other priority-based scheduling algorithms, including weighted max-min fairness (WMMF) and priority-in-priority-out (PIPO), with the same parameter setting method used in Experiment 1 with 500 evaluation groups. The comparison metric is the global satisfaction degree of all users. When applying the WMMF strategy, energy is allocated in multiple rounds based on users' weights that are greater than zero until the available energy is distributed. In each allocation round, energy is allocated according to each user's respective weight ratio (the ratio of each user's weight to the sum of the weights of all users participating in this round) so that energy can be allocated to all users. Users whose needs are not met continue to participate in the next round. Users who are allocated more energy than they need only receive an energy supply equal to the demanded power, and the excess energy will be accumulated for allocation to other users in the next round. Through its unique allocation mechanism, the WMMF strategy comprehensively considers users with different weights, satisfying the needs of users with significant weights and ensuring that the minimum needs of each user are met, thereby balancing priority and fairness to some extent. In the PIPO strategy, power consumers and suppliers are sorted according to their priority, from highest to lowest. High-priority power consumers receive the requested energy first, and only then energy is allocated to low-priority consumers. Similarly, low-priority power suppliers supply energy before high-priority power suppliers are allowed to provide energy. Thus, the higher the priority of power consumers, the earlier the energy is allocated, whereas the lower the priority of power suppliers, the earlier the energy is supplied. 
 
 The Scheduling directory holds the three energy scheduling algorithms LPESCP, PIPO, and WMMF
 ```
@@ -200,20 +201,18 @@ Scheduling
 ├── LPESCP.py
 ├── PIPO.py
 ├── WMMF.py
-└── __pycache__
 ```
 
 
-#### 6.3 Experiment 3(exp3.py)
-In Experiment 3, we also conduct 500 random evaluation groups to compare our proposed LPESCP model with four other PEKS schemes in terms of time overhead measured in milliseconds (ms). The same as Experiment 1, in each group, the demanded energy of each power consumer, the maximum energy supply of each power supplier, and the weight of each user are randomly generated.
-The scheme_result and scheme directories store the result data of the searchable encryption scheme in Experiment 3 and the algorithm program, respectively.
+#### 6.3 Experiment 3: exp3.py(实验3：exp3.py)
+In Experiment 3, 500 random evaluation groups are constructed to compare the Lightweight_PAEKS method used in the LPESCP model with four other PEKS schemes in terms of the time overhead measured in milliseconds (ms). In each group, two pairs of public-private keys are randomly generated to simulate the sender and receiver, with keywords of both sender and receiver being set to "urgent".
 
+The Schemes directory holds the five peks algorithms CBEKS, CBSE, PAUKS, Lightweight_PAEKS and PAEKS.
 ```
-schemes
+Schemes
 ├── CBEKS.py
 ├── CBSE.py
 ├── PAUKS.py
-├── __pycache__
-├── lightweight_peaks.py
-└── paeks.py
+├── Lightweight_PAEKS.py
+└── PAEKS.py
 ```

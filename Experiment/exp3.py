@@ -1,9 +1,9 @@
 import time
-from schemes import paeks
-from schemes import CBSE
-from schemes import PAUKS
-from schemes import CBEKS
-from  schemes import lightweight_peaks
+from Schemes import PAEKS
+from Schemes import CBSE
+from Schemes import PAUKS
+from Schemes import CBEKS
+from  Schemes import Lightweight_PAEKS
 for i in range(500):
     start = time.perf_counter()
     params = paeks.Setup()

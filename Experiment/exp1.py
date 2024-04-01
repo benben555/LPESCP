@@ -2,7 +2,7 @@ import random
 
 from Scheduling import LPESCP
 from charm.schemes.pkenc.pkenc_rsa import RSA_Enc
-from schemes import lightweight_peaks as peaks
+from Schemes import Lightweight_PAEKS as peaks
 import tools
 from random import choice, randint
 
